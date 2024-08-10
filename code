@@ -1,0 +1,21 @@
+using System;
+class HelloWorld {
+  static void Main() {
+      int attempt = 1000000000;
+      Random dice = new Random();
+      int count = 0;
+      int max = 0;
+    for(int i = 0; i < attempt; i++)
+    {
+        for(int j = 0; j < 231; j++)
+        {
+            if(dice.Next(0,4) == 3)
+                count++;
+        }
+        if(count > max)
+            max = count;
+        count = 0;
+    }
+    Console.WriteLine(max);
+  }
+}
