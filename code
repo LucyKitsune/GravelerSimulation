@@ -10,24 +10,25 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            //Initializing all variables here so they only take up memory-space once. If you initialize them in  the loop, they take up their respective space in memory every loop and that can overload your RAM pretty quickly if you're doing it a billion times
             Random dice = new Random();
             int count = 0;
-            int max = 0;
-            int j;
-            Console.WriteLine("Proceed?");
+            int max = 0; //max technically doesn't have to be assigned a value here but to make sure the compiler doesn't mess up the edge case of comparing null to a number, it is set to zero here
+            int j; //j doesn't need to be assigned a value here, since it will be assigned one in the for loop every time before it starts anyways
+            Console.WriteLine("Proceed?"); //These two lines are here so I can start the compiling while the video is recording as the code will not progress until I input literally anything into the console
             Console.ReadLine();
-            for (int i = 0; i < 1000000000; i++)
+            for (int i = 0; i < 1000000000; i++) //Initializing i here in the brackets of the for-loop is not a problem since the first part of this only gets executed once, before the loop starts, the condition in the middle gets checked before every loop and the increase of the index variable is executed at the end of each loop
             {
                 for (j = 0; j < 231; j++)
                 {
-                    if (dice.Next(0, 4) == 3)
+                    if (dice.Next(0, 4) == 3) //dice.Next(0, 4) can output 0, 1, 2 and 3; checking for any specific one of these is checking if we hit the 25% chance, as they are all equally likely; count is increased by one every time we hit the specific number we are checking for
                         count++;
                 }
-                if (count > max)
+                if (count > max) //if the count of paralysis turns after one battle is higher than the previously recorded maximum, it overrides that meximum
                     max = count;
-                count = 0;
+                count = 0; //count is reset back to zero before we start the next battle
             }
-            Console.WriteLine(max);
+            Console.WriteLine(max); //At the end the highest amount of paralysis turns in one battle is output to console
         }
     }
  }
