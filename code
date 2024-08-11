@@ -1,21 +1,33 @@
 using System;
-class HelloWorld {
-  static void Main() {
-      int attempt = 1000000000;
-      Random dice = new Random();
-      int count = 0;
-      int max = 0;
-    for(int i = 0; i < attempt; i++)
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
     {
-        for(int j = 0; j < 231; j++)
+        static void Main(string[] args)
         {
-            if(dice.Next(0,4) == 3)
-                count++;
+            Random dice = new Random();
+            int count = 0;
+            int max = 0;
+            int j;
+            Console.WriteLine("Proceed?");
+            Console.ReadLine();
+            for (int i = 0; i < 1000000000; i++)
+            {
+                for (j = 0; j < 231; j++)
+                {
+                    if (dice.Next(0, 4) == 3)
+                        count++;
+                }
+                if (count > max)
+                    max = count;
+                count = 0;
+            }
+            Console.WriteLine(max);
         }
-        if(count > max)
-            max = count;
-        count = 0;
     }
-    Console.WriteLine(max);
-  }
-}
+ }
